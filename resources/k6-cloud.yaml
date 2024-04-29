@@ -1,0 +1,22 @@
+
+apiVersion: k6.io/v1alpha1
+kind: TestRun
+metadata:
+  name: k6-output-k6-cloud
+spec:
+  parallelism: 1
+  script:
+    configMap:
+      name: test-scripts
+      # TODO - Want a different test script? Change it here.
+      file: simple.js
+  arguments:  --tag testid=k6-output-k6-cloud
+  runner:
+    # TODO Change the image to your published image!
+    image: adityamodak/prom-k6-operator:latest
+    env:
+      - name: K6_OUT
+        value: cloud
+    envFrom:
+     - secretRef:
+         name: k6-cloud-secrets

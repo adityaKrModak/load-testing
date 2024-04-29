@@ -1,0 +1,22 @@
+apiVersion: k6.io/v1alpha1
+kind: TestRun
+metadata:
+  name: k6-output-grafana-cloud
+spec:
+  parallelism: 2
+  script:
+    configMap:
+      name: test-scripts
+      # TODO - Want a different test script? Change it here.
+      file: errors.js
+  arguments:  --tag testid=k6-output-error
+  runner:
+    # TODO Change the image to your published image!
+    image: adityamodak/prom-k6-operator:latest
+    env:
+      - name: K6_OUT
+        value: experimental-prometheus-rw
+    envFrom:
+     - configMapRef:
+         name: prometheus-config
+    
