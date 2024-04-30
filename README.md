@@ -120,11 +120,11 @@ kubectl create configmap test-scripts -n k6-demo \
 ## Running a distributed test
 We need to provide prometheus remote url for k6 to send metrics. 
 K6_PROMETHEUS_RW_SERVER_URL: Specifies the URL where k6 should send its Prometheus remote write requests. The URL points to the Prometheus service within the cluster, specifically configured to receive data on the default HTTP port 9090. 
-- `http://<service-name>.<namespace-name>.svc.cluster.local:9090//api/v1/write`
+- `http://<service-name>.<namespace-name>.svc.cluster.local:9090/api/v1/write`
 ```bash
 # Create a ConfigMap with our non-secret configuration for our cloud account
 kubectl create configmap -n k6-demo prometheus-config \
- --from-literal=K6_PROMETHEUS_RW_SERVER_URL=http://stable-kube-prometheus-sta-prometheus.prometheus.svc.cluster.local:9090//api/v1/write
+ --from-literal=K6_PROMETHEUS_RW_SERVER_URL=http://stable-kube-prometheus-sta-prometheus.prometheus.svc.cluster.local:9090/api/v1/write
 ```
 To perform a distributed test, you simply apply the k6 custom resource definition (CRD) to your Kubernetes cluster using the standard kubectl tool.
 ```bash
