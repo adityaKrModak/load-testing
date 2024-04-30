@@ -1,14 +1,14 @@
 apiVersion: k6.io/v1alpha1
 kind: TestRun
 metadata:
-  name: k6-output-grafana-cloud
+  name: k6-grafana
 spec:
   parallelism: 2
   script:
     configMap:
       name: test-scripts
       # TODO - Want a different test script? Change it here.
-      file: errors.js
+      file: error.js
   arguments:  --tag testid=k6-output-error
   runner:
     # TODO Change the image to your published image!
