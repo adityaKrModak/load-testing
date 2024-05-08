@@ -3,13 +3,13 @@ kind: TestRun
 metadata:
   name: k6-grafana
 spec:
-  parallelism: 2
+  parallelism: 1
   script:
     configMap:
       name: test-scripts
       # TODO - Want a different test script? Change it here.
-      file: error.js
-  arguments:  --tag testid=k6-output-error
+      file: simple.js
+  arguments:  --tag testid=k6-output-simple
   runner:
     # TODO Change the image to your published image!
     image: adityamodak/prom-k6-operator:latest
