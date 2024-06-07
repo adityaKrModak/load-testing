@@ -8,8 +8,8 @@ spec:
     configMap:
       name: test-scripts
       # TODO - Want a different test script? Change it here.
-      file: simple.js
-  arguments:  --tag testid=k6-output-simple
+      file: getmyreferral.js
+  arguments:  --tag testid=stage-getmyreferral-output-simple
   runner:
     # TODO Change the image to your published image!
     image: adityamodak/prom-k6-operator:latest
